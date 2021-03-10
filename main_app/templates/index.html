@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+      </head>
+<body>
+    <header>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+          <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              <strong>John's Quick Survey</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+  
+      <main role="main">
+  
+        <section class="jumbotron text-center">
+          <div class="container">
+            <h1 class="jumbotron-heading">John's Quick Survey</h1>
+            <p class="lead text-muted">Please answer the following questions so that I can get to know you a little better.</p>
+            <p>
+              <a href="#" class="btn btn-primary my-2">Fill Out the Survey</a>
+              <a href="/home" class="btn btn-secondary my-2">Clear entries</a>
+            </p>
+          </div>
+        </section>
+  
+        <div class="album py-5 bg-light">
+          <div class="container">
+             <form action='/result' method='post'>
+                {% csrf_token %} 
+  
+                <h4 class="mb-3" id='info'>Your Information</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">First name</label>
+                        <input type="text" class="form-control" name="first_name" placeholder="" value="">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Last name</label>
+                        <input type="text" class="form-control" name="last_name" placeholder="" value="">
+                    </div>
+                </div>
+  
+                <div class="mb-3">
+                    <label for="email">Your Student ID <span class="text-muted">(Optional)</span></label>
+                    <input type="text" class="form-control" name="student_id" placeholder="123-456-7890">
+                </div>
+              
+                <h4 class="mb-3" id='question'>Help me get to know you</h4>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Please fill out the following:</th>
+                        <th>Select an Option</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>How did you hear about me?</td>
+                        <td>
+                            <select name='survey1'>
+                                <option value='Facebook'>Facebook</option>
+                                <option value='Instagram'>Instagram</option>
+                                <option value='Twitter'>Twitter</option>
+                                <option value='Word on the Street'>Word on the Street</option>
+                                <option value='Other'>Other</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>What are you interested in discussing?</td>
+                        <td>
+                            <select name='survey2'>
+                                <option value='HTML/CSS'>HTML/CSS</option>
+                                <option value='Javascript'>Javascript</option>
+                                <option value='Python'>Python</option>
+                                <option value='Django'>Django</option>
+                                <option value='Flask'>Flask</option>
+                                <option value='Other'>Other</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>How much can you pay me per day?</td>
+                        <td>
+                            <select name='survey3'>
+                                <option value='1000'>$1000</option>
+                                <option value='5000'>$5000</option>
+                                <option value='10000'>$10000</option>
+                                <option value='60000'>$60000</option>
+                                <option value='Even_More'>Even More</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>         
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Comments (Optional)</span>
+                  </div>
+                  <textarea class="form-control" name="comments" aria-label="With textarea" placeholder="Your Comments Here"></textarea>
+                </div>
+                <hr class="mb-4">
+                {% csrf_token %}
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Complete Questionnaire</button>
+            </form>
+          </div>
+        </div>
+  
+      </main>
+</body>
+</html>
